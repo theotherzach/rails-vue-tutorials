@@ -1,0 +1,138 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Extends
+//  - Labels
+//  - Text Inputs
+//  - Booleans
+//  - Select Menus
+//
+//  NOTES:
+//  [1] The font size of inputs is set to render at 16px. This keeps the page
+//      from zooming in on mobile devices when a field is focused.
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Extends
+// -----------------------------------------------------------------------------
+
+%input--text {
+  @include input-appearance;
+  font-family: map-get($body, font);
+  font-size: rem(map-get($input, fontSize)); // [1]
+  line-height: 1;
+  width: 100%;
+  margin: 0;
+  padding: map-get($input, spacing);
+  color: map-get($input, color);
+  border: map-get($borderWidth, thin) solid map-get($input, borderColor);
+  background: map-get($input, bg);
+
+  &::placeholder {
+    color: map-get($input, color);
+  }
+
+  &:focus {
+    color: map-get($input, color--focus);
+    border-color: map-get($input, color--focus);
+    outline: none;
+    box-shadow: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: .5;
+  }
+
+  [data-useragent*="WebKit"] & {
+    &::-webkit-input-placeholder {
+      position: relative;
+      top: pem(2px, map-get($input, fontSize)); // [1]
+    }
+  }
+
+  .field--error & {
+    // placeholder
+  }
+}
+
+%labels {
+  font-size: rem(map-get($input, fontSize)*.8);
+  display: block;
+  margin: 0 0 map-get($input, spacing);
+}
+
+// -----------------------------------------------------------------------------
+// !-- Labels
+// -----------------------------------------------------------------------------
+
+label {
+  @extend %labels;
+}
+
+.label__required.label__required {
+  border-bottom: 0;
+}
+
+.field__error {
+  @extend %labels;
+}
+
+.field__hint {
+  @extend %labels;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Text Inputs
+// -----------------------------------------------------------------------------
+
+.input--text {
+  @extend %input--text;
+  @include scut-padding(n map-get($input, padding));
+}
+
+textarea {
+  @extend %input--text;
+  line-height: 1.4;
+  display: block;
+  height: (map-get($input, fontSize)*3*1.4) + (map-get($input, spacing)*2); // 3 lines tall, multiplied by line height with padding added
+  padding: map-get($input, spacing);
+}
+
+[placeholder]:focus::placeholder {
+  // placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Booleans
+// -----------------------------------------------------------------------------
+
+[type="checkbox"],
+[type="radio"] {
+  // placeholder
+}
+
+.label--boolean {
+  // placeholder
+}
+
+.label--checkbox {
+  // placeholder
+}
+
+.label--radio {
+  // placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Select Menus
+// -----------------------------------------------------------------------------
+
+.input--select {
+  // placeholder
+
+  select {
+    // placeholder
+  }
+}

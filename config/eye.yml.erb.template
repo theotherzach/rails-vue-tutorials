@@ -1,0 +1,48 @@
+<% app_root = "/home/rails-vue/rails-vue.stage.tablexi.com/current" %>
+<% rails_env = ENV["RAILS_ENV"] %>
+---
+name: RailsVue (<%= rails_env %>)
+
+config:
+  logger: <%= app_root %>/log/eye.log
+
+application:
+  working_dir: <%= app_root %>
+  stop_on_delete: true
+
+triggers:
+  - name: flapping
+    config:
+      times: 5
+      within: 5 minutes
+
+notifications:
+  - name: crash
+    # type: ses # aws-ses gem
+    type: aws_sdk # aws-sdk gem
+    level: error
+    contact: eye@tablexi.opsgenie.net
+    config:
+      from: noreply@tablexi.com
+      region: ~ # necessary for aws-sdk gem
+      access_key_id: ~
+      secret_access_key: ~
+
+processes:
+  - name: unicorn
+    config:
+      pid_file: tmp/pids/unicorn.pid
+      start_command: bundle exec unicorn -E deployment -Dc config/unicorn/<%= rails_env %>.rb
+      restart_command: "kill -USR2 {PID}"
+      start_timeout: 15 seconds
+      start_grace: 15 seconds
+      restart_timeout: 15 seconds
+      restart_grace: 15 seconds
+      stdout: log/unicorn.stdout.log
+      stderr: log/unicorn.stderr.log
+      monitor_children:
+        stop_command: "kill -QUIT {PID}"
+      user_commands:
+        rotate: "kill -USR1 {PID}"
+      notify:
+        crash: error

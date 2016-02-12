@@ -1,0 +1,62 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Extends
+//  - Standard Button
+//  - Secondary Buttons
+//  - Button Inputs
+//
+// -----------------------------------------------------------------------------
+
+%buttonInput {
+  @include input-appearance;
+  border: 0;
+  background: inherit;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Standard Button
+// -----------------------------------------------------------------------------
+
+.button {
+  zoom: 1; // Remove Me, here so extend doesn't fail below;
+
+  &:hover,
+  &:focus {
+    // hover and focus styles
+  }
+}
+
+button {
+  @extend .button;
+  @extend %buttonInput;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Secondary Button
+// -----------------------------------------------------------------------------
+
+.button--secondary {
+  zoom: 1; // Remove Me, here so extend doesn't fail below;
+
+  &:hover,
+  &:focus {
+    // hover and focus styles
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Button Inputs
+// -----------------------------------------------------------------------------
+
+[type="submit"],
+[type="button"] {
+  @extend .button;
+  @extend %buttonInput;
+}
+
+[type="reset"] {
+  @extend .button--secondary;
+  @extend %buttonInput;
+  cursor: pointer;
+}

@@ -1,0 +1,164 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Colors
+//  - Font Stacks
+//  - Border Widths
+//  - Outer Margins
+//  - Max Widths
+//  - Gutters
+//  - Z-Index
+//  - Breakpoints
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Colors
+// -----------------------------------------------------------------------------
+
+$white: #fff;
+$silver: #ddd;
+$gray: #aaa;
+$black: #111;
+
+$red: #ff4136;
+
+$color: (
+  disabled: $silver,
+  knockout: $white,
+  warning: $red,
+);
+
+// -----------------------------------------------------------------------------
+// !-- Font Stacks
+// -----------------------------------------------------------------------------
+
+$sansSerif: "Helvetica Neue", Helmet, Freesans, sans-serif;
+$serif: Georgia, "Times New Roman", Times, serif;
+
+// -----------------------------------------------------------------------------
+// !-- Border Widths
+// -----------------------------------------------------------------------------
+
+$borderWidth: (
+  thin: 1px,
+);
+
+// -----------------------------------------------------------------------------
+// !-- Outer Margins
+// -----------------------------------------------------------------------------
+
+$outerMargins: (
+);
+
+// -----------------------------------------------------------------------------
+// !-- Max Widths
+// -----------------------------------------------------------------------------
+
+$maxWidth: (
+);
+
+// -----------------------------------------------------------------------------
+// !-- Gutters
+// -----------------------------------------------------------------------------
+
+$gutter: (
+  standard: 50px,
+);
+
+// -----------------------------------------------------------------------------
+// !-- Z-Index
+// -----------------------------------------------------------------------------
+
+$z-index: (
+  hidden: -1,
+  below: 1,
+  above: 2,
+);
+
+// -----------------------------------------------------------------------------
+// !-- Breakpoints
+//
+// Example (single mq):
+//
+//   @media #{map-get($bp--up, 2)} {
+//     styles: here;
+//   };
+//
+// Example (chained mq):
+//
+//   @media #{map-get($bp--only, 2)} and #{map-get($bp--only, 4)} {
+//     styles: here;
+//   };
+//
+// See https://github.com/tablexi/starter/wiki/Variable-Naming#break-points
+// for more detailed usage instructions.
+// -----------------------------------------------------------------------------
+
+$bp--screen: "only screen";
+$bp--landscape: "#{$bp--screen} and (orientation: landscape)";
+$bp--portrait: "#{$bp--screen} and (orientation: portrait)";
+
+$bp: (
+  1: 500,
+  2: 800,
+  3: 1000,
+  4: 1300,
+  5: 1800,
+);
+
+$bp--lowerBound: (
+  1: pem(0, 16),
+  2: pem(map-get($bp, 1) + 1, 16),
+  3: pem(map-get($bp, 2) + 1, 16),
+  4: pem(map-get($bp, 3) + 1, 16),
+  5: pem(map-get($bp, 4) + 1, 16),
+  6: pem(map-get($bp, 5) + 1, 16),
+);
+
+$bp--upperBound: (
+  1: pem(map-get($bp, 1), 16),
+  2: pem(map-get($bp, 2), 16),
+  3: pem(map-get($bp, 3), 16),
+  4: pem(map-get($bp, 4), 16),
+  5: pem(map-get($bp, 5), 16),
+);
+
+$bp--up: (
+  2: "(min-width: #{map-get($bp--lowerBound, 2)})",
+  3: "(min-width: #{map-get($bp--lowerBound, 3)})",
+  4: "(min-width: #{map-get($bp--lowerBound, 4)})",
+  5: "(min-width: #{map-get($bp--lowerBound, 5)})",
+);
+
+$bp--down: (
+  2: "(max-width: #{map-get($bp--upperBound, 2)})",
+  3: "(max-width: #{map-get($bp--upperBound, 3)})",
+  4: "(max-width: #{map-get($bp--upperBound, 4)})",
+  5: "(max-width: #{map-get($bp--upperBound, 5)})",
+);
+
+$bp--only: (
+  1: "(max-width: #{map-get($bp--upperBound, 1)})",
+  2: "(min-width: #{map-get($bp--lowerBound, 2)}) and (max-width: #{map-get($bp--upperBound, 2)})",
+  3: "(min-width: #{map-get($bp--lowerBound, 3)}) and (max-width: #{map-get($bp--upperBound, 3)})",
+  4: "(min-width: #{map-get($bp--lowerBound, 4)}) and (max-width: #{map-get($bp--upperBound, 4)})",
+  5: "(min-width: #{map-get($bp--lowerBound, 5)}) and (max-width: #{map-get($bp--upperBound, 5)})",
+  6: "(min-width: #{map-get($bp--lowerBound, 6)})",
+);
+
+// -----------------------------------------------------------------------------
+// !-- Sprites
+// -----------------------------------------------------------------------------
+
+// Sprite Image path variables
+$sprite: "../images/icons/sprite";
+$sprite--lg: "../images/icons/sprite_@2x";
+
+// One map per each icon in the sprite, with height, width and position for
+// the icon
+$sprite-name: (
+  height: 7px,
+  position: 0 -36px,
+  width: 11px,
+);

@@ -1,0 +1,98 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Extends
+//  - Wrappers
+//  - Rows
+//  - Actions
+//
+//  NOTES:
+//  [1] We use Susy (http://susydocs.oddbird.net/en/latest/) to define the field
+//      width, based on the default 12-column grid setup.
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Extends
+// -----------------------------------------------------------------------------
+
+%fieldWrapper {
+  @extend %group;
+  margin-bottom: 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Wrappers
+// -----------------------------------------------------------------------------
+
+.field {
+  @extend %fieldWrapper;
+
+  &.disabled {
+    cursor: not-allowed;
+    opacity: .4;
+  }
+}
+
+.field--half {
+  @include span(6); // [1]
+}
+
+.field--third {
+  @include span(4); // [1]
+}
+
+.field--twoThird {
+  @include span(8); // [1]
+}
+
+.field--pull {
+  @include last; // [1]
+}
+
+.field--date {
+  .input--select {
+    margin-bottom: 1em;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Rows
+// -----------------------------------------------------------------------------
+
+.fieldRow {
+  @extend %fieldWrapper;
+  clear: both;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Actions
+// -----------------------------------------------------------------------------
+
+.form__actions {
+  @extend %fieldWrapper;
+  clear: both;
+  margin: 1em 0 0;
+}
+
+.form__action {
+  // placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Buttons
+// -----------------------------------------------------------------------------
+
+.buttonGroup {
+  @extend %fieldWrapper;
+  clear: both;
+  margin-top: 1em;
+
+  * {
+    margin-right: 1em;
+  }
+}

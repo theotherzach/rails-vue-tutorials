@@ -1,0 +1,168 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Extends
+//  - Scaled Heading Classes
+//  - Headings
+//  - Paragraphs
+//  - Blockquotes
+//  - Inline Elements
+//  - Time
+//  - Cite
+//  - Pre
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Extends
+// -----------------------------------------------------------------------------
+
+%hN {
+  // Shared styles amongst all headings
+  zoom: 1; // Remove Me
+
+  a {
+    // Shared styles for all links inside headings
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Scaled Heading Classes
+// -----------------------------------------------------------------------------
+
+// class, size, color, weight, uppercase(true|false)
+$sizes:
+    scale--0 2.5em map-get($heading, weight--bold) false
+  , scale--1 2.25em map-get($heading, weight--bold) false
+  , scale--2 2em map-get($heading, weight--bold) false
+  , scale--3 1.8em map-get($heading, weight--bold) false
+  , scale--4 1.6em map-get($heading, weight--bold) false
+  , scale--5 1.4em map-get($heading, weight--bold) false
+  , scale--6 1.2em map-get($heading, weight--bold) true
+  , scale--7 1em map-get($heading, weight--bold) true;
+
+@each $scale in $sizes {
+  .#{nth($scale, 1)} {
+    font-size: #{nth($scale, 2)};
+    font-weight: #{nth($scale, 3)};
+    color: map-get($heading, color);
+
+    @if nth($scale, 4) {
+      text-transform: uppercase;
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Headings
+// -----------------------------------------------------------------------------
+
+@each $heading in 1 2 3 4 5 6 {
+  h#{$heading} {
+    @extend .scale--#{$heading};
+    @extend %hN;
+  }
+}
+
+// Include any additional, shared or unique styles for headings here
+//
+// EXAMPLES:
+// .scale--0, h1, h2, h3 { }
+// h4, h5, h6, .scale--7 { }
+// h3 { }
+
+// -----------------------------------------------------------------------------
+// !-- Paragraphs
+// -----------------------------------------------------------------------------
+
+p {
+  font-size: 1em;
+  margin: 0;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Blockquotes
+// -----------------------------------------------------------------------------
+
+blockquote {
+  // Blockquote styles
+
+  p {
+    // Styles for nested paragraphs, often needed when WYSIWYG enabled
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Inline Elements
+// -----------------------------------------------------------------------------
+
+strong,
+b {
+  // Placeholder
+}
+
+em,
+i {
+  // Placeholder
+}
+
+u {
+  // Placeholder
+}
+
+del,
+s {
+  // Placeholder
+}
+
+ins {
+  // Placeholder
+}
+
+sup {
+  // Placeholder
+}
+
+sub {
+  // Placeholder
+}
+
+small {
+  // Placeholder
+}
+
+mark {
+  // Placeholder
+}
+
+code {
+  // Placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Time
+// -----------------------------------------------------------------------------
+
+time {
+  // Placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Citation
+// -----------------------------------------------------------------------------
+
+cite {
+  // Placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Pre
+// -----------------------------------------------------------------------------
+
+pre {
+  // Placeholder
+
+  code {
+    // Placeholder
+  }
+}

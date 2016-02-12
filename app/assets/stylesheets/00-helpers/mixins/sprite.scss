@@ -1,0 +1,23 @@
+// ----------------------------------------------------------------------------
+// Image sprite
+//
+// This Mixin helps make life easy by giving us a single line to call our sprite
+// that, from the variables, hooks into all the right sass maps.
+//
+// 1. It uses the image--2x mixin to insert the hi-res sprite when needed
+// 2. It uses the image name to position the sprite and pull the right
+//    sizes for the image container.
+//
+// .spritedThing {
+//   @include sprite($upArrow);
+// }
+// ----------------------------------------------------------------------------
+
+@mixin sprite($sprite-name) {
+  @include image-2x($sprite, $sprite--lg);
+  position: relative;
+  display: inline-block;
+  width: map-get($sprite-name, width);
+  height: map-get($sprite-name, height);
+  background-position: map-get($sprite-name, position);
+}

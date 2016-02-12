@@ -1,0 +1,70 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Extends
+//  - Table Container
+//  - Table Rows
+//  - Table Cells
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Extends
+// -----------------------------------------------------------------------------
+
+%cells {
+  zoom: 1; // Remove Me, here so extend doesn't fail below;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Table Container
+// -----------------------------------------------------------------------------
+
+table {
+  // Placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Table Rows
+// -----------------------------------------------------------------------------
+
+tr {
+  // Shared row styles
+
+  &:nth-child(even) {
+    // alternating rows, starting with the second in the section
+    // Odd should be the default styles
+  }
+
+  thead & {
+    // Only the row in the thead
+  }
+
+  tfoot & {
+    // Only the row in the thead
+  }
+
+  tbody & {
+    // Only the row in the tbody
+  }
+
+  + tr {
+    // Target styles to concurrent rows
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Table Cells
+// -----------------------------------------------------------------------------
+
+th {
+  @extend %cells;
+
+  tbody & {
+    // Target heading cells in the table body
+  }
+}
+
+td {
+  @extend %cells;
+}

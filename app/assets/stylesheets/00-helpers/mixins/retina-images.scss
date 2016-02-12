@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// !-- Retina Images
+// Save 2 versions of background images: 1 at actual size, 1 twice as big. Pass
+// them in as variables, using the asset pipeline paths. Then, a few things
+//  happen:
+//
+// 1. The small image is made the background of the item.
+// 2. If the device has a pixel density of 1.5 or higher (output with Scut) the
+//    large image is used instead.
+//    TODO: Replace this image sizing function (away from Compass)
+// 3. The large image is resized to the same dimensions of the small image
+//    (using Compass functions).
+//
+// EX: (logo swap)
+//
+// .logo {
+//   @include image-2x('logos/gs.png', 'logos/gs_@2x.png');
+// }
+// -----------------------------------------------------------------------------
+
+@mixin image-2x($sm-image, $lg-image) {
+  background-image: url(image-path($sm-image));
+
+  @include scut-hd-bp(1.5) {
+    background-image: url(image-path($lg-image));
+    // TODO: Replace this image sizing function (away from Compass)
+    background-size: image-width($sm-image) image-height($sm-image);
+  }
+}

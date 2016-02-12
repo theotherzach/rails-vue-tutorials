@@ -1,0 +1,23 @@
+// -----------------------------------------------------------------------------
+// !-- IE8 Transparency
+//
+// Mimic transparent overlay in IE8 with filters and transparent gradients.
+// Fallback for missing rgba support. Use only when necessary, as this will slow
+// down rendering. Solid color fallbacks are prefered when possible. Mixin uses
+// Sass functions to convert the passed in color to an rgba color, and then
+// to convert the rgba color to an IE hexadecimal color value with opacity.
+// Finally, that color is used in an MS filter to create a gradient from and
+// to itself.
+//
+// Seriously.
+// -----------------------------------------------------------------------------
+
+// scss-lint:disable VendorPrefix
+@mixin ie-opacity($color, $alpha) {
+  $transparent-color: transparentize($color, $alpha);
+  $ie-transparent-color: ie_hex_str($transparent-color);
+  background: transparent;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie-transparent-color},endColorstr=#{$ie-transparent-color})"; // IE8
+  zoom: 1;
+}
+// scss-lint:enable VendorPrefix

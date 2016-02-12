@@ -1,0 +1,93 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Byline
+//  - Address
+//  - Heading Group
+//  - Blockquote/Citation
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Byline
+// -----------------------------------------------------------------------------
+
+.byline {
+  // Placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Address
+// -----------------------------------------------------------------------------
+
+.mailingAddress {
+  // Full container
+}
+
+.mailingAddress__person {
+  // Person Name
+}
+
+.mailingAddress__org {
+  // Company Name
+}
+
+.mailingAddress__address {
+  // Address info
+
+  [itemprop="streetAddress"] {
+    // Street Address
+  }
+
+  [itemprop="addressLocality"] {
+    // City
+  }
+
+  [itemprop="addressRegion"] {
+    // State
+  }
+
+  [itemprop="postalCode"] {
+    // Zip Code
+  }
+}
+
+.mailingAddress__contact {
+  // Container to hold telephone, email, fax, etc.
+
+  [itemprop="telephone"] {
+    // Telephone Number
+  }
+
+  [itemprop="email"] {
+    // Email Link
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Heading Group
+// -----------------------------------------------------------------------------
+
+.headingGroup {
+  // Placeholder
+
+  > * {
+    // Add styles specific to headings in a .headingGroup here
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Blockquote/Citation
+// -----------------------------------------------------------------------------
+
+.quote {
+  // Placeholder
+
+  p {
+    // Handle any nested paragraph issues here
+  }
+}
+
+.quote__citation {
+  // Placeholder
+}

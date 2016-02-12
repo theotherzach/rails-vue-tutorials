@@ -1,0 +1,11 @@
+// -----------------------------------------------------------------------------
+// !-- Input Appearance
+// We can't rely on Autoprefixer because appearance is a non-standard css
+// property.
+// -----------------------------------------------------------------------------
+
+@mixin input-appearance($value: none) {
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+  appearance: $value;
+}

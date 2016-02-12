@@ -1,0 +1,167 @@
+%head
+
+  %meta{charset: "utf-8"}
+  %title= text("title", page: @meta_data[:title])
+
+  = csrf_meta_tags
+
+  -# ---------------------------------------------------------------------------
+  -# Basic Content Meta Tags
+  -# ---------------------------------------------------------------------------
+
+  %meta{ name: "description", content: @meta_data[:description] }
+  %meta{ name: "DC.description", content: @meta_data[:description] }
+  - if @meta_data.key?(:author)
+    %meta{ name: "author", content: @meta_data[:author] }
+    %meta{ name: "DC.creator", content: @meta_data[:author] }
+  %meta{ name: "DC.title", content: text("title", page: @meta_data[:title]) }
+  %meta{ name: "copyright", content: "Copyright #{text("site_name")}, #{copyright_year_range(2014)}" }
+
+  -# ---------------------------------------------------------------------------
+  -# Google Site Verification - Only needed if app uses Turbolinks, otherwise
+  -# connect Webmaster Tools using using async version of Google Analytics.
+  -# Grab this key from Webmaster Tools: https://www.google.com/webmasters/
+  -# ---------------------------------------------------------------------------
+
+  - if @meta_data.key?(:google_site_verification)
+    %meta{ name: "google-site-verification", content: @meta_data[:google_site_verification] }
+
+  -# ---------------------------------------------------------------------------
+  -# Facebook Card Tags - comments indicate what type of card the tags are for
+  -# and empty tags should not be rendered. Check out object types at
+  -# http://ogp.me/#types and take note of additional type specific tags
+  -# ---------------------------------------------------------------------------
+
+  %meta{ property: "og:title", content: @meta_data[:og_title] }
+  %meta{ property: "og:description", content: @meta_data[:og_description] }
+  %meta{ property: "og:type", content: @meta_data[:og_type] }
+  %meta{ property: "og:image", content: image_url(@meta_data[:og_image]) }
+  %meta{ property: "og:url", content: request.original_url }
+  %meta{ property: "og:site_name", content: @meta_data[:og_sitename] }
+  - if @meta_data[:fb_app_id].present?
+    %meta{ property: "fb:app_id", content: @meta_data[:fb_app_id] }
+
+  -# ---------------------------------------------------------------------------
+  -# Twitter Card Tags - comments indicate what type of card the tags are for
+  -# and empty tags should not be rendered
+  -# ---------------------------------------------------------------------------
+
+  -# ----- All Twitter Cards
+  %meta{ name: "twitter:title", content: @meta_data[:twit_title] }
+  %meta{ name: "twitter:site", content: @meta_data[:twit_account] }
+  - if @meta_data.key?(:twit_author)
+    %meta{ name: "twitter:creator", content: @meta_data[:twit_author] }
+  %meta{ name: "twitter:description", content: @meta_data[:twit_description] }
+  %meta{ name: "twitter:card", content: @meta_data[:twit_card] }
+
+  -# ----- Summary Cards (text with small, optionally unique, image/thumbnail)
+  - if @meta_data[:twit_card] == "summary"
+    %meta{ name: "twitter:image", content: image_url(@meta_data[:twit_image]) }
+
+  -# ----- Large Image Summary Cards (text with unique image larger than 280(w) x 150(h))
+  - if @meta_data[:twit_card] == "summary_large_image"
+    -# Unique Image larger than 280(w) x 150(h)
+    %meta{ name: "twitter:image:src", content: image_url(@meta_data[:twit_image]) }
+
+  -# ----- App Cards - On any page promoting an ad
+  - if @meta_data[:twit_card] == "app"
+    - if @meta_data.key?(:twit_iphone_name)
+      %meta{ name: "twitter:app:name:iphone", content: @meta_data[:twit_iphone_name] }
+    - if @meta_data.key?(:twit_iphone_id)
+      %meta{ name: "twitter:app:id:iphone", content: @meta_data[:twit_iphone_id] }
+    - if @meta_data.key?(:twit_iphone_url)
+      %meta{ name: "twitter:app:url:iphone", content: @meta_data[:twit_iphone_url] }
+    - if @meta_data.key?(:twit_google_name)
+      %meta{ name: "twitter:app:name:googleplay", content: @meta_data[:twit_google_name] }
+    - if @meta_data.key?(:twit_google_id)
+      %meta{ name: "twitter:app:id:googleplay", content: @meta_data[:twit_google_id] }
+    - if @meta_data.key?(:twit_google_url)
+      %meta{ name: "twitter:app:url:googleplay", content: @meta_data[:twit_google_url] }
+
+  -# ----- Player Cards - Cards for video content
+  - if @meta_data[:twit_card] == "player"
+    -# keyframe image same size as player
+    - if @meta_data.key?(:twit_keyframe)
+      %meta{ name: "twitter:image", content: @meta_data[:twit_keyframe] }
+    - if @meta_data.key?(:twit_player)
+      %meta{ name: "twitter:player", content: @meta_data[:twit_player] }
+    - if @meta_data.key?(:twit_video_width)
+      %meta{ name: "twitter:player:width", content: @meta_data[:twit_video_width] }
+    - if @meta_data.key?(:twit_video_height)
+      %meta{ name: "twitter:player:height", content: @meta_data[:twit_video_height] }
+
+  -# ---------------------------------------------------------------------------
+  -# These are Browser and Mobile Meta Tags
+  -# ---------------------------------------------------------------------------
+
+  %meta{:"http-equiv" => "X-UA-Compatible", :content => "IE=edge,chrome=1"}
+  %meta{:"http-equiv" => "cleartype", :content => "on"}
+  %meta{name: "HandheldFriendly", content: "True"}
+  %meta{name: "MobileOptimized", content: "320"}
+  %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
+
+  -# ---------------------------------------------------------------------------
+  -# If the site has a related mobile app, set the ID here.
+  -# ---------------------------------------------------------------------------
+
+  - if @meta_data[:apple_app_id].present?
+    %meta{name: "apple-itunes-app", content: "app-id=#{@meta_data[:apple_app_id]}"}
+
+  -# ---------------------------------------------------------------------------
+  -# Canonical URL
+  -# ---------------------------------------------------------------------------
+
+  - if @canonical_url
+    %link{rel: :canonical, href: @canonical_url}
+
+  -# ---------------------------------------------------------------------------
+  -# Stylesheets
+  -# ---------------------------------------------------------------------------
+
+  = stylesheet_link_tag "application", media: "screen"
+  = stylesheet_link_tag "application-print", media: "print"
+
+  -# ---------------------------------------------------------------------------
+  -# Javascripts
+  -# ---------------------------------------------------------------------------
+
+  -# Set controller based variables via the gon gem
+  = include_gon
+
+  -# Javascripts that need to load in the head. No jQuery here, please.
+  = javascript_include_tag "application-head"
+
+  -# ---------------------------------------------------------------------------
+  -# Favicons
+  -# ---------------------------------------------------------------------------
+
+  -# IE 6-10 use favicon.ico from public. Other browsers use the appropriate file from this list
+  %link{rel: "icon", type: "image/png", sizes: "16x16", href: image_url("fav/favicon-16x16.png")}
+  %link{rel: "icon", type: "image/png", sizes: "32x32", href: image_url("fav/favicon-32x32.png")}
+  %link{rel: "icon", type: "image/png", sizes: "96x96", href: image_url("fav/favicon-96x96.png")}
+  %link{rel: "icon", type: "image/png", sizes: "160x160", href: image_url("fav/favicon-160x160.png")}
+  %link{rel: "icon", type: "image/png", sizes: "196x196", href: image_url("fav/favicon-196x196.png")}
+
+  -# iOS Favicons
+  %link{rel: "apple-touch-icon-precomposed", type: "image/png", href: image_url("fav/apple-touch-icon-precomposed.png")}
+  %link{rel: "apple-touch-icon-precomposed", sizes: "60x60", type: "image/png", href: image_url("fav/apple-touch-icon-60x60-precomposed.png")}
+  %link{rel: "apple-touch-icon-precomposed", sizes: "72x72", type: "image/png", href: image_url("fav/apple-touch-icon-72x72-precomposed.png")}
+  %link{rel: "apple-touch-icon-precomposed", sizes: "76x76", type: "image/png", href: image_url("fav/apple-touch-icon-76x76-precomposed.png")}
+  %link{rel: "apple-touch-icon-precomposed", sizes: "114x114", type: "image/png", href: image_url("fav/apple-touch-icon-114x114-precomposed.png")}
+  %link{rel: "apple-touch-icon-precomposed", sizes: "120x120", type: "image/png", href: image_url("fav/apple-touch-icon-120x120-precomposed.png")}
+  %link{rel: "apple-touch-icon-precomposed", sizes: "144x144", type: "image/png", href: image_url("fav/apple-touch-icon-144x144-precomposed.png")}
+  %link{rel: "apple-touch-icon-precomposed", sizes: "152x152", type: "image/png", href: image_url("fav/apple-touch-icon-152x152-precomposed.png")}
+  %link{rel: "apple-touch-icon-precomposed", sizes: "180x180", type: "image/png", href: image_url("fav/apple-touch-icon-180x180-precomposed.png")}
+
+  -# Windows 8 Pinboard Tiles - 144x144
+  %meta{name: "msapplication-TileColor", content: "#e7e7e8"}
+  %meta{name: "application-name", content: text("site_name")}
+  %meta{name: "msapplication-TileImage", content: image_url("fav/mstile-144x144.png")}
+  -# Windows 8.1 Pinboard Tiles - Images fill full tapable area, leave room for text at bottom
+  %meta{name: "msapplication-square70x70logo", content: image_url("fav/mstile-70x70.png")}
+  %meta{name: "msapplication-square150x150logo", content: image_url("fav/mstile-150x150.png")}
+  %meta{name: "msapplication-wide310x150logo", content: image_url("fav/mstile-310x150.png")}
+  %meta{name: "msapplication-square310x310logo", content: image_url("fav/mstile-310x310.png")}
+
+  -# Opera Coast Favicon - 228x228
+  %link{rel: "icon", type: "image/png", href: image_url("fav/favicon-coast.png"), sizes: "228x228"}

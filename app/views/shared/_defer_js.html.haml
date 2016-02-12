@@ -1,0 +1,17 @@
+:coffee
+  downloadJSAtOnload = ->
+    element = document.createElement("script")
+    element.src = "#{asset_path file}"
+    document.body.appendChild element
+
+  if window.addEventListener
+    window.addEventListener "load", downloadJSAtOnload, false
+
+  else if window.attachEvent
+    window.attachEvent "onload", downloadJSAtOnload
+
+  else
+    preExistingOnload = window.onload
+    window.onload = ->
+      setTimeout downloadJSAtOnload, 0
+      preExistingOnload?()

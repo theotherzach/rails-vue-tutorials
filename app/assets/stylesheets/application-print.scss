@@ -1,0 +1,239 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Import Variables
+//  - Saner Defaults
+//  - Link/Abbreviation Styles
+//  - Sensible Element Defaults
+//  - Hidden items
+//  - Site Specific Styles
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Import Variables
+// -----------------------------------------------------------------------------
+
+// scss-lint:disable PropertyUnits, ImportantRule
+@import "00-helpers/functions";
+
+$black--print: #000;
+
+// -----------------------------------------------------------------------------
+// !-- Saner Defaults
+// -----------------------------------------------------------------------------
+
+* {
+  color: $black--print;
+  background: transparent;
+  box-shadow: none;
+  text-shadow: none;
+}
+
+@page {
+  margin-top: 1.5cm;
+  margin-bottom: 1.5cm;
+}
+
+body {
+  margin-right: .25in;
+  margin-left: .25in;
+
+  &:before {
+    display: block;
+    margin: 0 auto .125in;
+    padding-bottom: .25in;
+    content: url(""); // Insert Logo Here
+    text-align: center;
+    border-bottom: 1pt solid $black--print;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Link/Abbreviation Styles
+// -----------------------------------------------------------------------------
+
+a {
+  color: $black--print;
+
+  &[href]:after {
+    content: " (" attr(href) ")";
+    word-wrap: break-word !important;
+  }
+
+  &[href=""]:after,
+  &[href^="#"]:after,
+  &[href^="javascript"]:after,
+  &[href^="mailto:"]:after {
+    display: none;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Sensible Element Defaults
+// -----------------------------------------------------------------------------
+
+h1 {
+  font-size: 24pt;
+}
+
+h2 {
+  font-size: 21pt;
+}
+
+h3 {
+  font-size: 18pt;
+}
+
+h4 {
+  font-size: 16pt;
+}
+
+h5 {
+  font-size: 14pt;
+}
+
+h6 {
+  font-size: 11pt;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: sans-serif;
+  font-weight: 500;
+  margin: 1em 0 .5em;
+  text-decoration: none !important;
+  page-break-after: avoid !important;
+}
+
+p,
+li,
+small,
+mark {
+  font-family: sans-serif;
+  font-size: 10pt;
+  line-height: 14pt;
+  margin: 0 0 .5em;
+}
+
+img {
+  display: block;
+  max-width: 3in;
+  height: auto !important;
+  margin: 1em 0;
+}
+
+pre {
+  border: 1px solid lighten($black--print, 40%);
+  page-break-inside: avoid !important;
+}
+
+tr,
+img {
+  page-break-inside: avoid !important;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  orphans: 3 !important;
+  widows: 3 !important;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+blockquote {
+  margin: 1em 0;
+  padding: 2em 0;
+  text-align: center;
+  border-top: 1pt solid $black--print;
+  border-bottom: 1pt solid $black--print;
+
+  footer {
+    font-family: sans-serif;
+    text-align: right;
+  }
+}
+
+address {
+  font-style: normal;
+}
+
+form {
+  margin: 0 0 10pt;
+
+  label {
+    display: block;
+  }
+
+  input,
+  textarea,
+  .chzn-container {
+    width: 100%;
+    margin: .5em 0 1em;
+  }
+
+  fieldset {
+    overflow: hidden;
+    margin: 0 0 10pt;
+  }
+
+  .field {
+    float: left;
+    width: 97%;
+    margin-right: 3%;
+  }
+
+  .field--third {
+    width: 30%;
+  }
+
+  .field--quarter {
+    width: 22%;
+  }
+
+  .field--half {
+    width: 47%;
+  }
+}
+
+table {
+  width: 100%;
+}
+
+td,
+th {
+  padding: 5pt;
+  text-align: center;
+  border-top: 1pt solid $black--print;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Hidden Items
+// -----------------------------------------------------------------------------
+
+.delete-these-items {
+  display: none;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Site Specific Styles
+// -----------------------------------------------------------------------------
+
+// scss-lint:enable PropertyUnits

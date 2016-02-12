@@ -1,0 +1,15 @@
+!!! 5
+
+<!--[if lt IE 9 ]><html class="no-js ie ltie9 ltie10" lang="#{I18n.locale}"><![endif]-->
+<!--[if IE 9 ]><html lang="#{I18n.locale}" class="no-js ie ie9 ltie10"> <![endif]-->
+<!--[if (gt IE 9)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!-->
+%html.no-js.no-ie{lang: I18n.locale}
+  <!--<![endif]-->
+
+  = render 'layouts/head'
+
+  %body{id: @body_id}
+
+    = yield
+
+    = render 'layouts/foot'

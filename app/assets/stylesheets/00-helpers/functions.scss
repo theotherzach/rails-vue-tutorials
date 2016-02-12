@@ -1,0 +1,85 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+// - Strip Units
+// - Convert Pixels To Ems
+// - REM Sizing
+// - Fluid Type Sizes
+// - Colors
+// - Inverse Percentage
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Strip Units
+// This'll strip the unit from any number passed to it.
+// -----------------------------------------------------------------------------
+
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+
+// -----------------------------------------------------------------------------
+// !-- Convert Pixels to Ems
+// Must pass in the em base, as that changes throughout the document tree.
+// -----------------------------------------------------------------------------
+
+@function pem($pixels, $base: 16) {
+  @return (strip-unit($pixels)/strip-unit($base)) * 1em;
+}
+
+// -----------------------------------------------------------------------------
+// !-- REM Sizing
+// This mixin sets our font sizes in rem values. We'll set fallbacks in the IE
+// Stylesheet.
+// -----------------------------------------------------------------------------
+
+@function rem($pixels, $base: map-get($html, fontSize)) {
+  @return (strip-unit($pixels)/strip-unit($base)) * 1rem;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Fluid Type Sizes
+// Sets the type size to vw units, based on a target font-size and target
+// browser width. This let's us control the target size through the various
+// breakpoints.
+// -----------------------------------------------------------------------------
+
+@function vw($targetSize, $breakPoint) {
+  @return ((strip-unit($targetSize)/strip-unit($breakPoint))*100) * 1vw;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Colors
+//
+// These mixins help us to manipulate color with more precision. They simply
+// leverage the mix function of Sass to mix in some amount of white or black to
+// either tint or shade a particular color.
+// -----------------------------------------------------------------------------
+
+// Slightly lighten a color}
+@function tint($color, $percentage) {
+  $inversedPercentage: inversePercent($percentage);
+  @return mix($color, #fff, $inversedPercentage);
+}
+
+// Slightly darken a color
+@function shade($color, $percentage) {
+  $inversedPercentage: inversePercent($percentage);
+  @return mix($color, #000, $inversedPercentage);
+}
+
+// -----------------------------------------------------------------------------
+// !-- Inverse Percentage
+// Inverses the amount of a percent. (e.g. 80% becomes 20%)
+//
+// returns number (percent)
+// -----------------------------------------------------------------------------
+
+@function inversePercent($percent) {
+  @if unit($percent) == "%" {
+    @return 100% - $percent;
+  } @else {
+    @error "'#{$percent}' is not a percentage"
+  }
+}

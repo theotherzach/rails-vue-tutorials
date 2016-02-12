@@ -1,0 +1,9 @@
+en:
+  views:
+    kaminari:
+      first_page:
+        label: "First Page"
+      gap:
+        label: "…"
+      last_page:
+        label: "Last Page"

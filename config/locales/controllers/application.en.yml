@@ -1,0 +1,20 @@
+en:
+  controllers:
+    application:
+      meta_data:
+        site_name: 'Site Name Here'
+        title: 'Page Title Here (Site Name auto added at end, see config/locales/views/layouts/head.en.yml)'
+        description: 'Page description here'
+        og:
+          title: '!meta_data.title!'
+          description: '!meta_data.description!'
+          type: 'website'
+          sitename: '!meta_data.site_name!'
+        twit:
+         title: '!meta_data.title!'
+         account: '@twitterAccount'
+         description: '!meta_data.description!'
+         card: "summary"
+        app_id:
+          fb: ""
+          apple: ""

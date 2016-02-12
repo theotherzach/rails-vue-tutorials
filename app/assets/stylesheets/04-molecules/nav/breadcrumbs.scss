@@ -1,0 +1,35 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Container
+//  - List
+//
+//  NOTE: This assumes we're using the breadcrumbs_on_rails gem and need to
+//  work with the markup it gives us. Find out more at the following sites:
+//  https://github.com/tablexi/starter/wiki/Optional-and-Useful-Gems#breadcrumbs-on-rails
+//  http://simonecarletti.com/code/breadcrumbs_on_rails/
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Container
+// -----------------------------------------------------------------------------
+
+.breadcrumbs {
+  // Placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- List
+// -----------------------------------------------------------------------------
+
+.breadcrumbs__list {
+
+  li {
+    // Styles on this will apply to the "current page"
+  }
+
+  a {
+    // Styles here will be on the breadcrumb trail links
+  }
+}

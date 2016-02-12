@@ -1,0 +1,16 @@
+-# -----------------------------------------------------------------------------
+-# Javascripts
+-# -----------------------------------------------------------------------------
+
+-# All the other scripts (including jQuery).
+= javascript_include_tag "application-foot"
+
+/[if (lte IE 9)]
+  -# Loads selectivizr and respond
+  = javascript_include_tag "application-foot-ltie10"
+
+-# Deferred JS scripts. These don't run until after the load event is triggered.
+= defer_javascript_include_tag "application-defer.js"
+
+- if content_for? :page_scripts
+  = yield :page_scripts

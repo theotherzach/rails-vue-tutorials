@@ -1,0 +1,25 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Container Utilities
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Container Utilities
+// -----------------------------------------------------------------------------
+
+// This can be used to set a horizontal overflow on things like tables and
+// preformatted text that otherwise break a responsive site at narrow views.
+%responsiveOverflow {
+  overflow-y: scroll;
+}
+
+// Clearfix
+%group {
+  &:after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}

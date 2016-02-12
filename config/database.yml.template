@@ -1,0 +1,10 @@
+development: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: 8
+  database: rails-vue-development
+  host: localhost
+
+test:
+  <<: *default
+  database: rails-vue-test

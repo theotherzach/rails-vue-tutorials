@@ -1,0 +1,100 @@
+// ------------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Extends
+//  - Containers
+//  - Modules
+//  - Main/Rail Columns
+//
+// ------------------------------------------------------------------------------
+
+// ------------------------------------------------------------------------------
+// !-- Extends
+// ------------------------------------------------------------------------------
+
+%l--container {
+  @extend %group;
+}
+
+// -----------------------------------------------------------------------------
+// !-- Containers
+// -----------------------------------------------------------------------------
+
+.l--1up {
+  @extend %l--container;
+}
+
+.l--2up {
+  @extend %l--container;
+}
+
+.l--3up {
+  @extend %l--container;
+}
+
+.l--rail--quarter {
+  @extend %l--container;
+}
+
+.l--rail--third {
+  @extend %l--container;
+}
+
+// ------------------------------------------------------------------------------
+// !-- Modules
+// ------------------------------------------------------------------------------
+
+.l--module {
+
+  .l--2up & {
+    @include gallery(6);
+  }
+
+  .l--3up & {
+    @include gallery(4);
+  }
+
+  .l--4up & {
+    @include gallery(3);
+  }
+}
+
+.l--rail {
+
+  .l--rail--third & {
+    @include span(4);
+  }
+
+  .l--rail--quarter & {
+    @include span(3);
+  }
+
+  .l--rail--right & {
+    @include last;
+  }
+
+  .l--rail--left & {
+    @include first;
+  }
+}
+
+
+.l--main {
+
+
+  .l--rail--third & {
+    @include span(8);
+  }
+
+  .l--rail--quarter & {
+    @include span(9);
+  }
+
+  .l--rail--right & {
+    @include first;
+  }
+
+  .l--rail--left & {
+    @include last;
+  }
+}

@@ -1,0 +1,62 @@
+// ------------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Extends
+//  - Container
+//  - Items
+//  - Links & Gaps
+//
+// ------------------------------------------------------------------------------
+
+// --------------------------------------------
+// !-- Extends
+// --------------------------------------------
+
+%pagination__content {
+  zoom: 1; // Remove Me, here so extend doesn't fail below;
+}
+
+// --------------------------------------------
+// !-- Container
+// --------------------------------------------
+
+.pagination {
+  // Placeholder
+}
+
+.pagination__list {
+  // Placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Items
+// -----------------------------------------------------------------------------
+
+.pagination__item {
+  // Placeholder
+}
+
+// -----------------------------------------------------------------------------
+// !-- Links
+// -----------------------------------------------------------------------------
+
+.pagination__link {
+  @extend %pagination__content;
+
+  &:hover,
+  &:focus {
+    // Placeholder
+  }
+}
+
+.pagination__backward {
+  // Unique styles for First Page Link Will pick up pagination__link
+}
+
+.pagination__forward {
+  // Unique styles for Last Page Link
+}
+
+.pagination__gap {
+  // Placeholder
+}

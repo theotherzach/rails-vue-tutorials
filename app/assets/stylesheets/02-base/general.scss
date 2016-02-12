@@ -1,0 +1,63 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Vanity Styles
+//  - HTML & Body
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Vanity Styles
+// -----------------------------------------------------------------------------
+
+::selection {
+  color: map-get($selection, color);
+  background: map-get($selection, bg);
+  text-shadow: none;
+}
+
+img::selection {
+  background: transparent;
+}
+
+// scss-lint:disable VendorPrefix
+@media #{map-get($bp--only, 1)} {
+  html {
+    -webkit-text-size-adjust: none;
+  }
+
+  a:link {
+    -webkit-tap-highlight-color: map-get($selection, bg);
+  }
+}
+// scss-lint:enable VendorPrefix
+
+// -----------------------------------------------------------------------------
+// !-- HTML & Body
+// -----------------------------------------------------------------------------
+
+html {
+  font-size: percentage(scut-strip-unit(map-get($html, fontSize))/16);
+  min-height: 100%;
+}
+
+body {
+  font-family: map-get($body, font);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.3;
+  box-sizing: border-box;
+  min-height: 100%;
+  background-color: map-get($body, bg);
+}
+
+body,
+select,
+input,
+textarea {
+  color: map-get($body, color);
+}
+
+.is--hoverDisabled {
+  pointer-events: none;
+}

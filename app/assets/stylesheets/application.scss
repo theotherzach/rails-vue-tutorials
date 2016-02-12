@@ -1,0 +1,164 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Functions & Variables
+//  - Webfonts
+//  - Breakpoint Concatenation (Sprockets Media Query Combiner)
+//  - Sass Libraries & Reset
+//  - Mixins
+//  - Extendable Classes
+//  - Project Base
+//  - Atomic Styles
+//  - Molecular Styles
+//  - Organisms
+//  - Templates
+//  - Working File
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Functions and Variables
+// -----------------------------------------------------------------------------
+
+@import "00-helpers/functions";
+@import "00-helpers/variables/**/*";
+
+// -----------------------------------------------------------------------------
+// !-- Webfonts
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+// !-- Breakpoint Concatenation
+// The Sprockets Media Query Combiner gem combines media queries at the end of
+// the document, but does so based on the order they are written in the document.
+// These are small, scrap styles that will ensure the media queries show up in
+// the right order when combined.
+// -----------------------------------------------------------------------------
+
+.smqc {
+  @media #{map-get($bp--up, 2)} {zoom: 1;}
+  @media #{map-get($bp--up, 3)} {zoom: 1;}
+  @media #{map-get($bp--up, 4)} {zoom: 1;}
+  @media #{map-get($bp--up, 5)} {zoom: 1;}
+  @media #{map-get($bp--only, 6)} {zoom: 1;}
+  @media #{map-get($bp--down, 5)} {zoom: 1;}
+  @media #{map-get($bp--down, 4)} {zoom: 1;}
+  @media #{map-get($bp--down, 3)} {zoom: 1;}
+  @media #{map-get($bp--down, 2)} {zoom: 1;}
+  @media #{map-get($bp--only, 1)} {zoom: 1;}
+}
+
+// -----------------------------------------------------------------------------
+// !-- Sass Libraries & Reset
+// Scut, Susy, etc.
+//
+// -----------------------------------------------------------------------------
+
+// First, import the Eric Meyer reset
+@import "reset";
+// Next, add to it with our own stuff
+@import "00-helpers/reset-add-ons";
+
+// Alphabetical
+@import "scut";
+@import "susy";
+
+// -----------------------------------------------------------------------------
+// !-- Mixins
+// -----------------------------------------------------------------------------
+
+@import "00-helpers/mixins/**/*";
+
+// -----------------------------------------------------------------------------
+// !-- Extendable Classes
+// Use these files to create extendable classes that are shared throughout the
+// site.
+// -----------------------------------------------------------------------------
+
+@import "01-extends/**/*";
+
+// -----------------------------------------------------------------------------
+// !-- Project Base
+// Load up the some general CSS and the project grid.
+// -----------------------------------------------------------------------------
+
+@import "02-base/**/*";
+
+// -----------------------------------------------------------------------------
+// !-- Atom Styles
+//
+// In chemistry, atoms are the basic building blocks of matter. They have
+// distinct properties and can't be broken down further without losing their
+// meaning.
+//
+// Translated to interfaces, atoms are basic tags, such as form labels, inputs
+// or buttons. They also include more abstract elements like color palettes,
+// fonts, and animations.
+//
+// Atoms are abstract and aren't often terribly useful on their own, but they
+// provide a useful reference and allow you to see all your global styles laid
+// out at a glance.
+// -----------------------------------------------------------------------------
+
+@import "03-atoms/**/*";
+
+// -----------------------------------------------------------------------------
+// !-- Molecular Styles
+//
+// In chemistry, molecules are groups of atoms bonded together, which take on new
+// properties as a result.
+//
+// In interfaces, molecules are groups of elements that function together as a
+// unit. For example, a form label, search input, and button atom can combine
+// them together to form a search form molecule.
+//
+// Building up from atoms to molecules encourages a “do one thing and do it well”
+// mentality, and encourages creating reusable interface patterns.
+// -----------------------------------------------------------------------------
+
+@import "04-molecules/**/*";
+
+// -----------------------------------------------------------------------------
+// !-- Organisms
+//
+// Organisms are groups of molecules (and possibly atoms) joined together to form
+// distinct section of an interface.
+//
+// Organisms can consist of similar and/or disparate molecule types. For example,
+// a masthead organism might consist of a logo, navigation, and search form,
+// while a “product grid” organism might consist of the same product info
+// molecule repeated over and over.
+//
+// Building up from molecules to organisms encourages creating standalone,
+// portable, reusable components.
+// -----------------------------------------------------------------------------
+
+// @import "05-organisms/**/*";
+
+// -----------------------------------------------------------------------------
+// !-- Templates
+//
+// With templates, we break our biochemistry analogy to get into language that
+// makes more sense to clients and final output. Templates are comprised mostly
+// of organisms combined together to form page-level objects.
+//
+// Templates provide context for these relatively abstract molecules and
+// organisms, which is helpful for designers and clients alike.
+//
+// Templates mostly focus on content structure (such as character length, image
+// size, etc) rather than the actual content.
+// -----------------------------------------------------------------------------
+
+// @import "06-templates/**/*";
+
+// -----------------------------------------------------------------------------
+// !-- Working File
+//
+// The working.scss file is a place where we can try out ideas, troubleshoot, add
+// any quick fixes that need to make it into the project quickly or a place where
+// devs can quickly add css to the project if they are unsure how it fits into
+// the Atomic Pattern. Use this file sparingly!
+// -----------------------------------------------------------------------------
+
+@import "working";

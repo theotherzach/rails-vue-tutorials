@@ -1,0 +1,70 @@
+// -----------------------------------------------------------------------------
+// Table of Contents
+//
+//  - Unordered Lists
+//  - Ordered Lists
+//  - Definition Lists
+//  - Inline Lists
+//
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// !-- Unordered Lists
+// -----------------------------------------------------------------------------
+
+ul {
+  // List Container
+
+  > li {
+    // Target just the direct children to avoid compounding in nested lists
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Ordered Lists
+// -----------------------------------------------------------------------------
+
+ol {
+  // List Container
+
+  > li {
+    // Target just the direct children to avoid compounding in nested lists
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Definition Lists
+// -----------------------------------------------------------------------------
+
+dl {
+  // List Container
+}
+
+dt {
+  // Definition Term
+
+  + dt {
+    // Add styles for stacked, multiple terms
+  }
+}
+
+dd {
+  // Definition Description
+
+  + dd {
+    // Add styles for stacked, multiple descriptions
+  }
+
+  + dt {
+    // Works as a "last-child" selector between the last definition and the
+    // next term
+  }
+}
+
+// -----------------------------------------------------------------------------
+// !-- Inline Lists
+// -----------------------------------------------------------------------------
+
+.list--inline {
+  @include scut-list-inline;
+}
