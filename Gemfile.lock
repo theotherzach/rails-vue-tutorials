@@ -131,6 +131,8 @@ GEM
     factory_girl_rails (4.6.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    faker (1.6.1)
+      i18n (~> 0.5)
     ffi (1.9.10)
     formatador (0.2.5)
     globalid (0.3.6)
@@ -384,6 +386,7 @@ DEPENDENCIES
   database_cleaner
   eye-patch (>= 0.3.0)
   factory_girl_rails
+  faker
   gon
   guard-rake
   haml-rails
@@ -418,4 +421,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   1.10.6
+   1.11.2

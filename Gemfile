@@ -7,6 +7,7 @@ gem "rails", "~> 4.2"
 gem "pg"
 gem "lograge"
 gem "logstash-event"
+gem "faker"
 
 ## Deployment/Services
 gem "recipient_interceptor"
