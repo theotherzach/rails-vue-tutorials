@@ -1,0 +1,9 @@
+%h1 Filter List
+
+.section
+  - @people.each do |person|
+    .personCard
+      .personCard-name #{full_name(person)}
+      .personCard-email #{person.email}
+      .personCard-website
+        %a{ href: "http://#{person.website}" } #{person.website}

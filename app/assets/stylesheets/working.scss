@@ -6,3 +6,21 @@
 // proper place in the application.
 //
 // -----------------------------------------------------------------------------
+
+$light-grey: #ededef;
+$white: #ffffff;
+
+body {
+  background-color: $light-grey;
+}
+
+.section {
+  margin: 20px;
+}
+
+.personCard {
+  background-color: $white;
+  max-width: 400px;
+  margin: 10px;
+  padding: 10px;
+}

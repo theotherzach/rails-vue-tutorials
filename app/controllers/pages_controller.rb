@@ -4,4 +4,8 @@ class PagesController < ApplicationController
   def home
   end
 
+  def filter_list
+    @people = Person.all
+  end
+
 end

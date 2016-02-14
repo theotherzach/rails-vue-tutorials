@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get "500", to: "errors#server_error"
 
   root "pages#home"
+  get "filter-list", to: "pages#filter_list"
 
   # Used with error routing, must remain last in sort order.
   fallback_options = Rails.env.development? ? { unmatched_route: %r{(?!.*rails/mailers).*} } : {}
