@@ -15,6 +15,7 @@
 # ASSETS FOLDER
 #
 #= require_tree ./defer
+#= require ./vue/manifest
 
 
 #= require_self
