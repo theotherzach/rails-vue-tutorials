@@ -1,4 +1,12 @@
 class Person < ActiveRecord::Base
+  extend Textacular
+
+  def self.all_or_search(q = nil)
+    return self.basic_search(q) if q
+
+    self.all
+  end
+
 end
 
 # == Schema Information

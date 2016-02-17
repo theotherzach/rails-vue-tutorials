@@ -342,6 +342,8 @@ GEM
       activesupport
       i18n (>= 0.6.8)
       redcarpet (>= 3.3.3)
+    textacular (3.2.2)
+      activerecord (>= 3.0, < 5.0)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -415,6 +417,7 @@ DEPENDENCIES
   sprockets-media_query_combiner
   tablexi-logger
   text_helpers
+  textacular
   therubyracer
   uglifier
   unicorn

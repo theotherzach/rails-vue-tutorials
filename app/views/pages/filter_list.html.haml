@@ -1,9 +1,17 @@
 %h1 Filter List
 
-.section
+%section.filterList
+  .filterList-control
+    = form_tag filter_list_path, method: "GET", class: "filterList-form" do
+      = text_field_tag :q, @q, placeholder: "Find person"
+      = submit_tag "Filter people", class: "btn small default"
+
+    - if @q
+      = link_to "Reset Filter", filter_list_path, class: "btn default"
+
   - @people.each do |person|
-    .personCard
-      .personCard-name #{full_name(person)}
-      .personCard-email #{person.email}
-      .personCard-website
+    .filterList-card
+      .filterList-card-name #{full_name(person)}
+      .filterList-card-email #{person.email}
+      .filterList-card-website
         %a{ href: "http://#{person.website}" } #{person.website}
