@@ -24,6 +24,7 @@ gem "kaminari"
 gem "simple_form"
 gem "text_helpers"
 gem "jbuilder"
+gem "sprockets-jst-str"
 
 # Style
 gem "autoprefixer-rails"
