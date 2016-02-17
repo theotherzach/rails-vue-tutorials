@@ -10,7 +10,7 @@
 
 
 # VENDOR FOLDER
-
+#= require_tree ../../../vendor/assets/javascripts/defer
 
 # ASSETS FOLDER
 #
