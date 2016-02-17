@@ -14,7 +14,7 @@ This tutorial starts with a Rails rendered list and leads you through the steps 
 
 ### Downloading Vue
 
-Commit: e20bb86
+Commit: [e20bb86](https://github.com/theotherzach/rails-vue-tutorials/commit/e20bb86ef2bcfe31bd25c100cafc1307af79ab30)
 
 + Crab Vue with my JavaScript package manager of choice: `curl -LO http://vuejs.org/js/vue.js`
 + `mkdir -p vendor/assets/javascripts/defer`
@@ -27,7 +27,7 @@ Commit: e20bb86
 
 We're going to assume multiple Vue components across multiple Rails routes, so lets set up our directory structure in a way that protects us from Sprockets. Our strategy is to load Vanilla JavaScript functions first, followed by Vue filters, followed by Vue components, and finally the single Vue application. 
 
-Commit: 1c1e328
+Commit: [1c1e328](https://github.com/theotherzach/rails-vue-tutorials/commit/1c1e328870cdb85098e56ca240feb65e613a1471)
 
 + `mkdir app/assets/javascripts/vue`
 + `touch !$/manifest.js`
@@ -58,7 +58,7 @@ Commit: 1c1e328
 
 My current thinking is that it's easier to have a single Vue instance for the entire Rails app with components that may or may not get loaded depending on the Rails route in question. I'm open to suggestions on this as I'm not a fan of always having an active Vue instance, but the alternative is problematic for reasons I won't get into here.
 
-Commit: 1be037f
+Commit: [1be037f](https://github.com/theotherzach/rails-vue-tutorials/commit/1be037f2ff59d5bd65998af7c91b34c78fbda108)
 
 + In `vue/main.js`, make the file look like this:
 ```
@@ -74,7 +74,7 @@ Commit: 1be037f
 
 We do not want to mix our Rails templates and our Vue templates for a variety of reasons, but I'm mostly concerned with how hard it is to keep code straight when boundaries are blurred. We're going to mix templates for demonstrative purposes only.
 
-Commit: f8a1ac2
+Commit: [f8a1ac2](https://github.com/theotherzach/rails-vue-tutorials/commit/f8a1ac288f06ee5bf74364ac7570d7faecbefaf2)
 
 
 + In `vue/main.js`, make the constructor look like this:
@@ -96,7 +96,7 @@ Commit: f8a1ac2
 
 ### Revert Mixed Templates
 
-Commit: 68c027c
+Commit: [68c027c](https://github.com/theotherzach/rails-vue-tutorials/commit/68c027c49a2a3169c682ffd6504f3b71eaa0f955)
 
 + delete the code from the previous step and verify that "Do NOT do this!" is no longer displayed at /filter-list
 
@@ -104,7 +104,7 @@ Commit: 68c027c
 
 Now that we've validated that Vue is functional by doing the simplest thing that's stupid, let's declare a component and do it in a more controlled way.
 
-Commit: bad91c3
+Commit: [bad91c3](https://github.com/theotherzach/rails-vue-tutorials/commit/bad91c3d33b31ecc4605d2aec2987d1f7fd50636)
 
 + `touch app/assets/javascripts/vue/components/filter-list.js`
 + In `app/views/pages/filter_list.html.haml`, right below `.section`, add a custom html5 element: `<vue-filter-list>`. (The "vue-" prefix is to communicate to anybody looking at the file that "here be JavaScript!."
@@ -129,7 +129,7 @@ Commit: bad91c3
 
 This idea is slightly less-bad than the last bad idea. I've used inline string templates before for super small components, but in general we'll want a solution that lets us put templates in dedicated files. 
 
-Commit: fd8b89b
+Commit: [fd8b89b](https://github.com/theotherzach/rails-vue-tutorials/commit/fd8b89b28ec37e80562802ca7af49e4581ddc9ab)
 
 
 + In `filter-list.js`
@@ -157,7 +157,7 @@ Commit: fd8b89b
 
 ### Revert Inline Templates
 
-Commit: d5b83b7
+Commit: [d5b83b7](https://github.com/theotherzach/rails-vue-tutorials/commit/d5b83b7243ec55c650f15fd5f206e8e46ef2bf83)
 
 + Verify that "You can do this, but it sucks." no longer appears in the DOM
 
@@ -165,7 +165,7 @@ Commit: d5b83b7
 
 Have you ever heard of JST templates? How about ECO or EJS? Having fought in the Backbone/ Rails wars, I've seen these templates and they're not great. Luckily, we can subvert their purpose and get our string HTML templates in their own files by using the [sprockets-jst-str](https://github.com/chetan/sprockets-jst-str) gem.
 
-Commit: 8bf2f67
+Commit: [8bf2f67](https://github.com/theotherzach/rails-vue-tutorials/commit/8bf2f675cfe85ae9b0aea6063318b38e96e039b8)
 
 + add `gem "sprockets-jst-str"` to the Gemfile and `bundle install`
 + restart the Rails server because asset gem.
@@ -198,7 +198,7 @@ Commit: 8bf2f67
 
 In general, it is cleaner to get our application's JSON from an ajax call. In cases where Vue is rendering a critical DOM element, such as a list that's supposed to be visible in the DOM, it may be better to bootstrap some or all of the data to prevent rendering delays. Regardless, I often bootstrap data as an intermediary step before moving to an API endpoint when refactoring a Rails view to a client rendered view as doing so allows me to deploy smaller steps.
 
-Commit: 81d0346
+Commit: [81d0346](https://github.com/theotherzach/rails-vue-tutorials/commit/81d03466b045fc063581d2bdd1a16bd5b255ed2f)
 
 + In `filter-list.js` add the following to our component config: `props: ['people'],`
 + in filter_list.html.haml : `%vue-filter-list{ people: @people.to_json }`
