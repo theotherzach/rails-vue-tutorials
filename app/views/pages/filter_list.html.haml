@@ -1,7 +1,7 @@
 %h1 Filter List
 
 .section
-  %vue-filter-list
+  %vue-filter-list{ people: @people.to_json }
   - @people.each do |person|
     .personCard
       .personCard-name #{full_name(person)}
