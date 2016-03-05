@@ -17,11 +17,20 @@ This tutorial starts with a Rails rendered list and leads you through the steps 
 
 ### Note The Server Side Implementation
 
+This is `/filter-list`
+
+![Unfiltered list](https://raw.githubusercontent.com/theotherzach/rails-vue-tutorials/master/unfiltered_list.png)
+
+Note: Since the app generates names randomly, you'll probably need to filter by a different name. Just pick a name from the list, throw it into the input box, and verify that it works.
+
+![Filtered list](https://raw.githubusercontent.com/theotherzach/rails-vue-tutorials/master/filtered_list.png)
+
+Don't worry about how the server side code is implemented. We just don't care. The important part is that we're going to convert the server side filtering to client side filtering using Vue.
 
 
 ### The Vue App Instance
 
-My current thinking is that it's easier to have a single Vue instance for the entire Rails app with components that may or may not get loaded depending on the Rails route in question. I'm open to suggestions on this as I'm not a fan of always having an active Vue instance, but the alternative is problematic for reasons I won't get into here.
+Start by creating a Vue app instance to rule them all.
 
 Commit: [1be037f](https://github.com/theotherzach/rails-vue-tutorials/commit/1be037f2ff59d5bd65998af7c91b34c78fbda108)
 
@@ -167,7 +176,7 @@ Commit: [81d0346](https://github.com/theotherzach/rails-vue-tutorials/commit/81d
 
 + In `filter-list.js` add the following to our component config: `props: ['people'],`
 + in filter_list.html.haml : `%vue-filter-list{ people: @people.to_json }`
-+ Refresh, do the vue devtools dance, (Live, Refresh, Live) and note that `VueFilterList`'s people is a json string, not an array. That won't do us any good.
++ Refresh, do the vue devtools dance, (Live, Refresh, Live) and note that `VueFilterList`'s people is a json string, not an array. That won't do us any good. (Note: if you remove the vue devtools and re-install you may not need to do this dance.)
 + [Coerce](http://vuejs.org/guide/components.html#Prop_Validation) our string into an array.
 + Refresh, vue devtools dance, and verify that People is an array with 100 members.
 
