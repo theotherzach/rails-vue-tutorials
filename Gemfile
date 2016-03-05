@@ -8,6 +8,7 @@ gem "pg"
 gem "lograge"
 gem "logstash-event"
 gem "faker"
+gem "textacular"
 
 ## Deployment/Services
 gem "recipient_interceptor"
