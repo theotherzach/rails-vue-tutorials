@@ -180,6 +180,35 @@ Commit: [81d0346](https://github.com/theotherzach/rails-vue-tutorials/commit/81d
 + [Coerce](http://vuejs.org/guide/components.html#Prop_Validation) our string into an array.
 + Refresh, vue devtools dance, and verify that People is an array with 100 members.
 
+### Mark off a place to work
+
+Commit: [af0cbd3](https://github.com/theotherzach/rails-vue-tutorials/commit/af0cbd393be5ae7775bb8c087a8b16e954f4f6a3)
+
+I like to keep the old implementation around while I'm working on the new one. Let's clearly mark which one is which.
+
++ In `app/views/pages/filter_list.html.haml` add some `h2` tags to denote which one is which.
+
+```haml
+%h2 Client Side
+.section
+  %vue-filter-list{ people: @people.to_json }
+
+%h2 Server Side
+.section.filterList
+  .filterList-control
+    -# etcetera
+```
+
++ Let's verify that we've got the proper list of people by updating `filter-list-template.jst.str`
++ Note that the final markup is up to you, this is just validating that we're passing the data in correctly
+
+```html
+<ul>
+  <li v-for="person in people">{{ person.first_name }}</li>
+</ul>
+```
+
++ Verify that you are seeing a list of first names in the browser
 
 ### Filter The List
 
