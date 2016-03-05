@@ -1,9 +1,11 @@
 %h1 Filter List
 
+%h2 Client Side
 .section
   %vue-filter-list{ people: @people.to_json }
 
-%section.filterList
+%h2 Server Side
+.section.filterList
   .filterList-control
     = form_tag filter_list_path, method: "GET", class: "filterList-form" do
       = text_field_tag :q, @q, placeholder: "Find person"
