@@ -4,55 +4,20 @@ This repo is designed to be a testing ground for using Rails with Vue.js
 
 ## Setup
 
++ clone this repo and cd into the project directory
++ `cp config/database.yml.template config/database.yml`
++ `cp config/eye.yml.erb.template config/eye.yml.erb`
++ `cp config/secrets.yml.template config/secrets.yml`
 + `bundle && bundle exec rake db:setup`
 
 ## Filter List Tutorial
 
-
 This tutorial starts with a Rails rendered list and leads you through the steps where you should be able to render the same list in `Vue` and add a `<input type="text">` filter. All shell commands assume that you're in the project root. All browser references assume that you're in the `/filter-list`route.
 
 
-### Downloading Vue
-
-Commit: [e20bb86](https://github.com/theotherzach/rails-vue-tutorials/commit/e20bb86ef2bcfe31bd25c100cafc1307af79ab30)
-
-+ Crab Vue with my JavaScript package manager of choice: `curl -LO http://vuejs.org/js/vue.js`
-+ `mkdir -p vendor/assets/javascripts/defer`
-+ copy vue to defer via `mv vue.js !$` (!$ references the argument to the previous shell command, or vendor/assets/javascripts/defer` in our case. If your terminal is set to treat Alt as the meta key, you could also type `cp vue.js ` and then `alt-.` to grab the last argument.)
-+ Add the following to application.defer.coffee under "VENDOR FOLDER": `#= require_tree ../../../vendor/assets/javascripts/defer`
-+ `open http://localhost:3000/filter-list`, hit command-alt j to open the JS console, and type `Vue` to verify that the `Vue` object is available. 
+### Note The Server Side Implementation
 
 
-### Vue Directory Structure
-
-We're going to assume multiple Vue components across multiple Rails routes, so lets set up our directory structure in a way that protects us from Sprockets. Our strategy is to load Vanilla JavaScript functions first, followed by Vue filters, followed by Vue components, and finally the single Vue application. 
-
-Commit: [1c1e328](https://github.com/theotherzach/rails-vue-tutorials/commit/1c1e328870cdb85098e56ca240feb65e613a1471)
-
-+ `mkdir app/assets/javascripts/vue`
-+ `touch !$/manifest.js`
-+ `mkdir !$` hit tab, backspace over manifest.js and replace with `components` and then run the command you should be looking at: `mkdir app/assets/javascripts/vue/components`
-+ `touch !$/.gitkeep` or `app/assets/javascripts/vue/components/.gitkeep`
-+ `mkdir app/assets/javascripts/vue/filters`
-+ `touch !$/.gitkeep` or `touch app/assets/javascripts/vue/filters/.gitkeep`
-+ `mkdir app/assets/javascripts/vue/services`
-+ `touch !$/.gitkeep` or `touch app/assets/javascripts/vue/services/.gitkeep`
-+ `touch app/assets/javascripts/vue/main.js`
-+ in `application-defer.coffee`, directly below `require_tree ./defer` add `#= require ./vue/manifest`
-+ In `vue/manifest.js` make sure the following appear in this order:
-  + //= require_tree ./services
-  + //= require_tree ./filters
-  + //= require_tree ./components
-  + //= require ./main
-+ in `main.js` add the following:
-
-```
-;(function () {
-  'use strict'
-  console.log('you can find me in main.js')
-}());
-```
-+ Verify that `'you can find me in main.js'` appears in the browser's console.
 
 ### The Vue App Instance
 
